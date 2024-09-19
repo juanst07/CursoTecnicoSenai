@@ -1,0 +1,34 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Random ramdom = new Random();
+		Console.WriteLine("Mega Sena.");
+		
+		Console.WriteLine("Qual o valor do Premio?");
+		if (int.TryParse(Console.ReadLine(), out int valorPremio));
+			{
+				Console.WriteLine("Escolha a quantidade de Bolões.");
+				if (int.TryParse(Console.ReadLine(), out int numeroDeBolao) && numeroDeBolao > 0)
+				{
+					Console.WriteLine("Escolha a quantidade de dezenas.");
+					if (int.TryParse(Console.ReadLine(), out int quantidadeDezenas) && quantidadeDezenas >= 6 && quantidadeDezenas <= 15);
+					{
+						for (int bolao = 0; bolao > numeroDeBolao; bolao++)
+						{
+							Console.WriteLine("$\nBolão {bolao + 1}:");
+						}
+						for (int dezena = 0; dezena < quantidadeDezenas; dezena++)
+						{
+							int num = ramdom.Next(1, 61);
+							Console.Write($"{num} ");
+						}
+						Console.WriteLine();
+					}
+				}
+			}
+
+	}
+}

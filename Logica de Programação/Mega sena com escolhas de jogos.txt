@@ -1,0 +1,38 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Random random = new Random();
+		Console.WriteLine("Gerador de dezenas aleatórias.\n");
+		Console.WriteLine("Escolha a quantidade de Bolões.");
+		
+		if (int.TryParse(Console.ReadLine(), out int numeroDeBolao) && numeroDeBolao > 0)
+		{
+			Console.WriteLine("Escolha a quantidade de dezenas.");
+			if (int.TryParse(Console.ReadLine(), out int quantidadeDezenas) && quantidadeDezenas > 0 && quantidadeDezenas >= 6 && quantidadeDezenas <= 15)
+			{
+			for (int bolao = 0; bolao < numeroDeBolao; bolao++)
+			{
+				Console.WriteLine($"\nBolão {bolao + 1}:");
+				
+				for (int dezena = 0; dezena < quantidadeDezenas; dezena++)
+				{
+					int num = random.Next(1, 61);
+					Console.Write($"{num} ");
+				}
+				Console.WriteLine();
+			}
+			}
+			else
+			{
+				Console.WriteLine("\nNúmero de dezenas inválido!");
+			}
+		}
+		else
+		{
+			Console.WriteLine("Número de bolões inválido!");
+		}
+	}
+}

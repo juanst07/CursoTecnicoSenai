@@ -1,0 +1,24 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Console.WriteLine("Digite uma letra: ");
+		char letra = char.Parse(Console.ReadLine().ToLower());
+		
+		if("aeiou".Contains(letra))
+		{
+			Console.WriteLine($"A letrta {letra} é uma vogal.");
+		}
+		else if (char.IsLetter(letra))
+		{
+			Console.WriteLine($"A letra {letra} é uma consoante.");
+		}
+		else
+		{
+			Console.WriteLine($"O caractere {letra} não é uma letra valida.");
+		}
+
+	}
+}

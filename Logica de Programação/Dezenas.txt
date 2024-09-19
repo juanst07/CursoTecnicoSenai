@@ -1,0 +1,76 @@
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Random random = new Random();
+        int[] dezenas = new int[6];
+
+        Console.WriteLine("Fase 1: Gerar 6 dezenas aleatórias");
+        for (int i = 0; i < 6; i++)
+        {
+            dezenas[i] = random.Next(1, 61);
+        }
+        Console.WriteLine("Dezenas: " + string.Join("-", dezenas));
+
+        Console.WriteLine("\nFase 2: Quantos jogos deseja gerar?");
+        int numeroJogos = int.Parse(Console.ReadLine());
+        for (int i = 0; i < numeroJogos; i++)
+        {
+            for (int j = 0; j < 6; j++)
+            {
+                dezenas[j] = random.Next(1, 61);
+            }
+            Console.WriteLine("Jogo " + (i + 1) + ": " + string.Join("-", dezenas));
+        }
+
+        Console.WriteLine("\nFase 3: Informe a quantidade de dezenas para o jogo (entre 6 e 15): ");
+        int quantidadeDezenas = int.Parse(Console.ReadLine());
+        while (quantidadeDezenas < 6 || quantidadeDezenas > 15)
+        {
+            Console.WriteLine("Número inválido. Deve ser entre 6 e 15. Digite novamente:");
+            quantidadeDezenas = int.Parse(Console.ReadLine());
+        }
+        dezenas = new int[quantidadeDezenas];
+        for (int i = 0; i < quantidadeDezenas; i++)
+        {
+            dezenas[i] = random.Next(1, 61);
+        }
+        Console.WriteLine("Dezenas: " + string.Join("-", dezenas));
+
+        Console.WriteLine("\nFase 5: Salvando jogo em arquivo...");
+        using (StreamWriter sw = new StreamWriter("jogosMegaSena.txt"))
+        {
+            for (int i = 0; i < numeroJogos; i++)
+            {
+                for (int j = 0; j < 6; j++)
+                {
+                    dezenas[j] = random.Next(1, 61);
+                }
+                sw.WriteLine("Jogo " + (i + 1) + ": " + string.Join("-", dezenas));
+            }
+        }
+        Console.WriteLine("Jogos salvos no arquivo jogosMegaSena.txt");
+
+        Console.WriteLine("\nFase 6: Informe o valor do prêmio:");
+        double premio = double.Parse(Console.ReadLine());
+
+        Console.WriteLine("\nFase 7: Divisão do prêmio:");
+        Console.WriteLine("75% para 6 dezenas: R$ " + (premio * 0.75));
+        Console.WriteLine("15% para 5 dezenas: R$ " + (premio * 0.15));
+        Console.WriteLine("10% para 4 dezenas: R$ " + (premio * 0.10));
+
+        Console.WriteLine("\nFase 8: Teste de validação de número.");
+        Console.WriteLine("Digite um número:");
+        string entrada = Console.ReadLine();
+        int numeroValidado;
+        while (!int.TryParse(entrada, out numeroValidado))
+        {
+            Console.WriteLine("Entrada inválida! Tente novamente.");
+            entrada = Console.ReadLine();
+        }
+        Console.WriteLine("Número válido: " + numeroValidado);
+    }
+}

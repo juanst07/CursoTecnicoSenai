@@ -1,0 +1,19 @@
+using System;
+					
+public class Program
+{
+	public static void Main()
+	{
+		Random random = new Random();
+		Console.WriteLine("Gerador de dezenas aleatórias.\n");
+		
+		int num1   = random.Next(1, 61);
+		int num2   = random.Next(1, 61);
+		int num3   = random.Next(1, 61);
+		int num4   = random.Next(1, 61);
+		int num5   = random.Next(1, 61);
+		int num6   = random.Next(1, 61);
+		
+		Console.WriteLine($"Numeros: {num1}-{num2}-{num3}-{num4}-{num5}-{num6}.");
+	}
+}

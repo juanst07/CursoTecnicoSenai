@@ -1,0 +1,54 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Random rand = new Random();
+        int numeroAleatorio = rand.Next(1, 101);
+        int palpite = 0;
+        int tentativas = 0;
+
+        Console.WriteLine("Adivinhe o número entre 1 e 100!");
+
+        do
+        {
+            bool entradaValida = false;
+            while (!entradaValida)
+            {
+                Console.Write("Digite seu palpite: ");
+                string entrada = Console.ReadLine();
+
+                entradaValida = int.TryParse(entrada, out palpite);
+                
+                if (!entradaValida)
+                {
+                    Console.WriteLine("Entrada inválida! Por favor, digite um número inteiro.");
+                }
+                else if (palpite < 1 || palpite > 100)
+                {
+                    Console.WriteLine("O número deve estar entre 1 e 100. Tente novamente.");
+                    entradaValida = false;
+                }
+            }
+
+            tentativas++;
+
+            int comparacao = palpite.CompareTo(numeroAleatorio);
+
+            if (comparacao < 0)
+            {
+                Console.WriteLine("Seu palpite foi muito baixo. Tente novamente.");
+            }
+            else if (comparacao > 0)
+            {
+                Console.WriteLine("Seu palpite foi muito alto. Tente novamente.");
+            }
+            else
+            {
+                Console.WriteLine($"Parabéns! Você acertou o número em {tentativas} tentativas.");
+            }
+
+        } while (palpite != numeroAleatorio);
+    }
+}

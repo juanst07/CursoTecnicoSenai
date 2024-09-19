@@ -1,0 +1,31 @@
+# Calculadora basica
+
+def adicionar(x, y): #adiciona 2 números para a soma.
+    return x + y
+
+def subtrair(x, y): #adiciona 2 números para a subtração
+    return x - y
+
+def multiplicar(x, y):#adiciona 2 números para a multiplicação
+    return x * y
+
+def dividir(x, y): #adiciona 2 números para a divisão
+    return x / y if y != 0 else "Erro! Divisão por zero." # se dividir por zero da erro na conta
+
+#
+num1 = float(input("Digite o primeiro número: ")) # pede 2 Numeros ao usuario para que seja realizado o calculo
+num2 = float(input("Digite o segundo número: "))
+
+operacao = input("Escolha a operação (+, -, *, /): ") #pede o usuario para escolher a operação. obs(com simbolos matemáticos) 
+
+if operacao == '+':
+    print("Resultado:", adicionar(num1, num2))
+elif operacao == '-':
+    print("Resultado:", subtrair(num1, num2))
+elif operacao == '*':
+    print("Resultado:", multiplicar(num1, num2))
+elif operacao == '/':
+    print("Resultado:", dividir(num1, num2))
+else:
+    print("Operação inválida!")
+
